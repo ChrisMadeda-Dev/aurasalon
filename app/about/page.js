@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
-import CallToAction from "../components/CallToAction";
 
 // HELPER COMPONENT to wrap sections and trigger animations
 const AnimatedSection = ({ children }) => {
@@ -29,7 +29,7 @@ const AnimatedSection = ({ children }) => {
 
 // 1. HERO COMPONENT
 const AboutHero = () => (
-  <div className="relative h-[40vh] md:h-[60vh] w-full flex items-center justify-center text-center text-white overflow-hidden">
+  <div className="relative h-[80vh] min-h-[500px] w-full flex items-center justify-center text-center text-white overflow-hidden">
     {/* Background Image */}
     <motion.div
       initial={{ scale: 1.1 }}
@@ -37,10 +37,16 @@ const AboutHero = () => (
       transition={{ duration: 2, ease: [0.43, 0.13, 0.23, 0.96] }}
       className="absolute inset-0 z-0"
     >
-    
+      <Image
+        src="https://placehold.co/1800x1200/2c2c2c/e0c4a0?text=Salon+Interior"
+        alt="Artistic view of the salon's luxurious interior"
+        fill
+        priority
+        className="object-cover"
+      />
       {/* Warm Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      
+      <div className="absolute inset-0 bg-gradient-to-t from-[#B85C38]/30 via-transparent to-transparent"></div>
     </motion.div>
 
     {/* Content */}
@@ -54,9 +60,12 @@ const AboutHero = () => (
         className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-stone-100 mb-4"
         style={{ fontFamily: '"Playfair Display", serif' }}
       >
-        More Than a Salon, It's a Movement.
+        More Than a Salon, It&apos;s a Movement.
       </h1>
-      
+      <p className="text-lg md:text-xl text-stone-200 leading-relaxed">
+        We are a sanctuary of style, culture, and community, dedicated to
+        redefining luxury hair care with an authentic Afro-centric touch.
+      </p>
     </motion.div>
   </div>
 );
@@ -71,15 +80,16 @@ const OurStory = () => {
       <div className="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Founder Image */}
         <motion.div
-          className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden shadow-2xl"
+          className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-2xl"
           initial={{ opacity: 0, x: -100 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <img
-            src="/images/fd.jpg"
+          <Image
+            src="https://placehold.co/600x800/8d6e63/ffffff?text=Founder"
             alt="Warm and professional portrait of the salon founder"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </motion.div>
 
@@ -122,22 +132,32 @@ const TheSanctuary = () => {
     {
       src: "https://placehold.co/600x800/3a3a3a/d4c3a3?text=Vibe",
       alt: "Detail shot of the salon decor",
+      width: 600,
+      height: 800,
     },
     {
       src: "https://placehold.co/600x400/b88b79/ffffff?text=Lounge",
       alt: "Client lounge area with plush seating",
+      width: 600,
+      height: 400,
     },
     {
       src: "https://placehold.co/600x600/5d4037/e0c4a0?text=Styling+Station",
       alt: "A clean and modern styling station",
+      width: 600,
+      height: 600,
     },
     {
       src: "https://placehold.co/600x450/4e4e4e/c1a990?text=Wash+Area",
       alt: "Relaxing hair washing and treatment area",
+      width: 600,
+      height: 450,
     },
     {
       src: "https://placehold.co/600x700/6a4f4b/f5efe3?text=Details",
       alt: "Close up of Afro-luxe interior details",
+      width: 600,
+      height: 700,
     },
   ];
 
@@ -186,9 +206,11 @@ const TheSanctuary = () => {
               className="mb-4 break-inside-avoid rounded-lg overflow-hidden shadow-lg"
               variants={itemVariants}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt}
+                width={item.width}
+                height={item.height}
                 className="w-full h-auto object-cover"
               />
             </motion.div>
@@ -203,22 +225,22 @@ const TheSanctuary = () => {
 const MeetTheTeam = () => {
   const teamMembers = [
     {
-      name: "Amina Rose",
+      name: "Amina Khalif",
       specialty: "Lead Stylist & Color Expert",
       bio: "With over a decade of experience, Amina blends artistry with hair science to create breathtaking transformations.",
-      img: "/images/t1.jpg",
+      img: "https://placehold.co/400x400/5d4037/ffffff?text=Amina",
     },
     {
       name: "Samuel Chege",
       specialty: "Protective Styling Guru",
       bio: "Samuel is a master of intricate braiding and protective styles that promote hair health and longevity.",
-      img: "/images/t3.jpg",
+      img: "https://placehold.co/400x400/8d6e63/ffffff?text=Samuel",
     },
     {
       name: "Zuri Okoro",
       specialty: "Curls & Coils Specialist",
-      bio: "Zuris passion is unlocking the potential of every curl pattern with custom cuts and hydration therapies.",
-      img: "/images/t2.jpg",
+      bio: "Zuri’s passion is unlocking the potential of every curl pattern with custom cuts and hydration therapies.",
+      img: "https://placehold.co/400x400/a1887f/ffffff?text=Zuri",
     },
   ];
 
@@ -268,10 +290,12 @@ const MeetTheTeam = () => {
                   transition: { duration: 0.3 },
                 }}
               >
-                <img
+                <Image
                   src={member.img}
                   alt={`Portrait of ${member.name}`}
-                  className="w-full h-96 object-cover object-top"
+                  width={400}
+                  height={400}
+                  className="w-full h-96 object-cover"
                 />
                 <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-white">
                   <h3 className="text-2xl font-bold font-serif">
@@ -292,20 +316,45 @@ const MeetTheTeam = () => {
   );
 };
 
+// 5. CALL TO ACTION COMPONENT
+const CallToAction = () => (
+  <AnimatedSection>
+    <div className="bg-[#4a4a4a] text-stone-100 py-20 md:py-28">
+      {" "}
+      {/* Charcoal background */}
+      <div className="container mx-auto px-6 lg:px-8 text-center">
+        <h2
+          className="text-3xl md:text-4xl font-serif font-bold mb-4"
+          style={{ fontFamily: '"Playfair Display", serif' }}
+        >
+          Join Our Story
+        </h2>
+        <p className="text-lg text-stone-300 max-w-2xl mx-auto mb-8">
+          Become a part of our community. Experience the difference that
+          passion, expertise, and luxury can make.
+        </p>
+        <motion.button
+          className="bg-[#B85C38] text-white font-bold py-3 px-8 rounded-full text-lg inline-flex items-center gap-2 shadow-lg hover:bg-[#a14f31] transition-colors duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Book an Appointment
+          <FaArrowRight />
+        </motion.button>
+      </div>
+    </div>
+  </AnimatedSection>
+);
 
 // MAIN PAGE COMPONENT
 export default function About() {
   return (
     <main className="bg-white">
-      {/* This is the main page component for the /about route.
-        It sequences the different sections of the About Us page.
-        Each component is self-contained for clarity and maintainability.
-      */}
       <AboutHero />
       <OurStory />
       <TheSanctuary />
       <MeetTheTeam />
-      <CallToAction/>
+      <CallToAction />
     </main>
   );
 }
