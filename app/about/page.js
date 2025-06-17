@@ -2,8 +2,23 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
 import CallToAction from "../components/CallToAction";
+
+// --- Helper Components & Icons ---
+// Inline SVG to replace react-icons dependency
+const ArrowRightIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 448 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+  </svg>
+);
 
 // HELPER COMPONENT to wrap sections and trigger animations
 const AnimatedSection = ({ children }) => {
@@ -52,7 +67,7 @@ const AboutHero = () => (
         className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-stone-100 mb-4"
         style={{ fontFamily: '"Playfair Display", serif' }}
       >
-        More Than a Salon, It's a Movement.
+        More Than a Salon, It&apos;s a Movement.
       </h1>
     </motion.div>
   </div>
@@ -293,10 +308,6 @@ const MeetTheTeam = () => {
 export default function About() {
   return (
     <main className="bg-white">
-      {/* This is the main page component for the /about route.
-        It sequences the different sections of the About Us page.
-        Each component is self-contained for clarity and maintainability.
-      */}
       <AboutHero />
       <OurStory />
       <TheSanctuary />

@@ -16,22 +16,21 @@ const galleryImages = [
   },
   { id: 2, src: "/images/s2.jpg", category: "Intricate Braiding" },
   { id: 3, src: "/images/s3.jpg", category: "Bridal & Updos" },
-  { id: 4, src: "/images/s4.jpg", category: "Nail Art" },
-  { id: 5, src: "/images/s5.jpg", category: "Creative Color" },
+  { id: 4, src: "/images/s5.jpg", category: "Nail Art" },
+  { id: 5, src: "/images/n4.jpg", category: "Creative Color" },
   {
     id: 6,
-    src: "/images/s1.jpg",
-    category: "Intricate Braiding",
+    src: "/images/n3.jpg",
+    category: "Nail Art",
     className: "col-span-2",
   },
-
 ];
 
 const galleryCategories = [
   "All",
   "Creative Color",
   "Intricate Braiding",
-  "Bridal & Updos",
+  "Nail Art",
 ];
 
 // 1. HERO COMPONENT

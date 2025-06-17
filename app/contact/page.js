@@ -2,12 +2,61 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaArrowRight,
-} from "react-icons/fa";
+
+// --- Helper Components & Icons ---
+// Inline SVGs to replace react-icons dependency
+const MapMarkerIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 384 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path>
+  </svg>
+);
+const PhoneIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 512 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path>
+  </svg>
+);
+const EnvelopeIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 512 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48L256 262.35 48 112h416zM48 368V138.65l208 138.67L464 138.65V368H48z"></path>
+  </svg>
+);
+const ArrowRightIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 448 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+  </svg>
+);
 
 // 1. CONTACT CARD COMPONENT
 const ContactCard = ({ icon, title, text, buttonText, href }) => (
@@ -23,7 +72,7 @@ const ContactCard = ({ icon, title, text, buttonText, href }) => (
     }}
   >
     <div className="flex items-center gap-4 mb-3">
-      <div className="bg-[#B85C38]/10 p-3 rounded-full">{icon}</div>
+      <div className="bg-[#B85C38]/10 text-gray-500 p-3 rounded-full">{icon}</div>
       <h3 className="text-xl font-bold font-serif text-stone-800">{title}</h3>
     </div>
     <p className="text-stone-600 mb-4 flex-grow">{text}</p>
@@ -33,7 +82,7 @@ const ContactCard = ({ icon, title, text, buttonText, href }) => (
       rel="noopener noreferrer"
       className="mt-auto bg-stone-800 text-white font-bold py-2 px-5 rounded-full text-sm inline-flex items-center gap-2 hover:bg-stone-900 transition-colors"
     >
-      {buttonText} <FaArrowRight />
+      {buttonText} <ArrowRightIcon />
     </a>
   </motion.div>
 );
@@ -106,8 +155,8 @@ export default function Contact() {
           Get In Touch
         </h1>
         <p className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">
-          We're here to help and answer any question you might have. We look
-          forward to hearing from you.
+          We&apos;re here to help and answer any question you might have. We
+          look forward to hearing from you.
         </p>
       </div>
 
@@ -119,21 +168,21 @@ export default function Contact() {
         animate="visible"
       >
         <ContactCard
-          icon={<FaPhoneAlt className="text-[#B85C38] text-xl" />}
+          icon={<PhoneIcon className="text-[#B85C38] text-xl" />}
           title="Call Us"
           text="Have a question or need to book over the phone? Give us a ring."
           buttonText="Call +254 700 123 456"
           href="tel:+254700123456"
         />
         <ContactCard
-          icon={<FaEnvelope className="text-[#B85C38] text-xl" />}
+          icon={<EnvelopeIcon className="text-[#B85C38] text-xl" />}
           title="Email Us"
           text="For inquiries, feedback, or collaborations, please send us an email."
           buttonText="hello@auranairobi.com"
           href="mailto:hello@auranairobi.com"
         />
         <ContactCard
-          icon={<FaMapMarkerAlt className="text-[#B85C38] text-xl" />}
+          icon={<MapMarkerIcon className="text-[#B85C38] text-xl" />}
           title="Visit Us"
           text="123 AfroLuxe Lane, Westlands, Nairobi, Kenya. We can't wait to welcome you."
           buttonText="Get Directions"

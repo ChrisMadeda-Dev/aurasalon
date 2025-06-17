@@ -2,7 +2,23 @@
 
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
+import CallToAction from "../components/CallToAction";
+
+// --- Helper Components & Icons ---
+// Inline SVG to replace react-icons dependency
+const ArrowRightIcon = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 448 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+  </svg>
+);
 
 // --- DATA ---
 // Service data organized by category. Prices are in Kenyan Shillings (KES).
@@ -259,38 +275,14 @@ const FeaturedSpecial = () => (
         </p>
         <button className="bg-[#B85C38] text-white font-bold py-3 px-8 rounded-full text-lg inline-flex items-center gap-2 shadow-lg hover:bg-[#a14f31] transition-colors duration-300">
           Enquire Now
-          <FaArrowRight />
+          <ArrowRightIcon />
         </button>
       </div>
     </div>
   </div>
 );
 
-// 5. CALL TO ACTION COMPONENT
-const CallToAction = () => (
-  <div className="bg-[#4a4a4a] text-stone-100 py-20 md:py-28">
-    <div className="container mx-auto px-6 lg:px-8 text-center">
-      <h2
-        className="text-3xl md:text-4xl font-serif font-bold mb-4"
-        style={{ fontFamily: '"Playfair Display", serif' }}
-      >
-        Ready for Your Transformation?
-      </h2>
-      <p className="text-lg text-stone-300 max-w-2xl mx-auto mb-8">
-        Your journey to exquisite hair and beauty starts here. Book your
-        appointment today and let our artisans craft a look that's uniquely you.
-      </p>
-      <motion.button
-        className="bg-[#B85C38] text-white font-bold py-3 px-8 rounded-full text-lg inline-flex items-center gap-2 shadow-lg hover:bg-[#a14f31] transition-colors duration-300"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Book an Appointment
-        <FaArrowRight />
-      </motion.button>
-    </div>
-  </div>
-);
+
 
 // MAIN COMPONENT FOR THE SERVICES ROUTE
 export default function Services() {
@@ -305,10 +297,6 @@ export default function Services() {
 
   return (
     <main className="bg-stone-50">
-      {/* This is the main component for the /services route.
-          It manages the state for the interactive menu and sequences
-          the different components of the services page.
-      */}
       <ServicesHero />
       <ServiceMenu
         activeCategory={activeCategory}
@@ -320,8 +308,7 @@ export default function Services() {
       </div>
 
       <FeaturedSpecial />
-
-      <CallToAction />
+      <CallToAction/>
     </main>
   );
 }

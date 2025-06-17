@@ -7,8 +7,6 @@ import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import { Inter, Playfair_Display } from "next/font/google";
 import CallToAction from "../components/CallToAction";
 
-
-
 // Font configuration
 const inter = Inter({
   subsets: ["latin"],
@@ -52,7 +50,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className={`text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 ${playfairDisplay.variable}`}
         >
-          Where Nairobi's Beauty Blooms.
+          Where Nairobi&apos;s Beauty Blooms.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 50 }}
@@ -88,19 +86,19 @@ const Hero = () => {
 const ServicesHighlight = () => {
   const services = [
     {
-      image: "/images/s1.jpg",
+      image: "/images/s2.jpg",
       title: "Intricate Braiding",
       description:
         "From classic cornrows to modern knotless styles, our experts weave artistry into every braid.",
     },
     {
-      image: "/images/s2.jpg",
+      image: "/images/s1.jpg",
       title: "Silk Press & Style",
       description:
         "Achieve lustrous, silky-smooth hair with our signature silk press, tailored for lasting health and shine.",
     },
     {
-      image: "/images/s3.jpg",
+      image: "/images/n5.jpg",
       title: "Luxe Nail Art",
       description:
         "Transform your nails into a canvas of expression with our bespoke and trendy nail art designs.",
@@ -209,10 +207,10 @@ const OurVibe = () => {
           <p
             className={`mt-6 text-lg leading-8 text-stone-600 font-sans ${inter.variable}`}
           >
-            Our salon is more than just a place for beauty treatments; it's a
-            sanctuary designed for your ultimate comfort and relaxation. From
-            the moment you walk in, you'll be enveloped in a calming atmosphere
-            that blends modern luxury with warm African hospitality.
+            Our salon is more than just a place for beauty treatments; it&apos;s
+            a sanctuary designed for your ultimate comfort and relaxation. From
+            the moment you walk in, you&apos;ll be enveloped in a calming
+            atmosphere that blends modern luxury with warm African hospitality.
           </p>
           <motion.div
             animate={{ scale: [1, 1.05, 1] }}
@@ -245,17 +243,17 @@ const Testimonials = () => {
     {
       quote:
         "An absolute oasis in Nairobi! The attention to detail and the quality of service is unmatched. I left feeling like royalty.",
-      name: "Amina K.",
+      name: "Mary K.",
     },
     {
       quote:
         "I've finally found my go-to salon. The stylists are true artists, and the vibe is so welcoming and chic. Highly recommend the silk press!",
-      name: "Chidinma O.",
+      name: "Martha O.",
     },
     {
       quote:
         "The best braiding experience I've ever had. Professional, gentle, and the results were stunning. The Afro-Luxe decor is beautiful too.",
-      name: "Fatima S.",
+      name: "Celine S.",
     },
     {
       quote:
@@ -306,7 +304,7 @@ const Testimonials = () => {
               <p
                 className={`text-stone-600 italic font-sans mb-6 ${inter.variable}`}
               >
-                "{testimonial.quote}"
+                &quot;{testimonial.quote}&quot;
               </p>
               <div className="flex justify-center text-[#D9A9A9] mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -326,7 +324,6 @@ const Testimonials = () => {
   );
 };
 
-
 // Main Page Component
 export default function HomePage() {
   return (
@@ -337,7 +334,7 @@ export default function HomePage() {
       <ServicesHighlight />
       <OurVibe />
       <Testimonials />
-      <CallToAction/>
+      <CallToAction />
     </div>
   );
 }
